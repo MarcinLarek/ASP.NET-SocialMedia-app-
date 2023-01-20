@@ -29,19 +29,19 @@ namespace  ProjektZaliczeniowy.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public static string ChangePassword => "ChangePassword";
+        public static string ChangePassword => "Zmień hasło";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public static string DownloadPersonalData => "DownloadPersonalData";
+        public static string DownloadPersonalData => "Pobierz dane osobiste";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public static string DeletePersonalData => "DeletePersonalData";
+        public static string DeletePersonalData => "Usuń dane osobiste";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -53,13 +53,13 @@ namespace  ProjektZaliczeniowy.Areas.Identity.Pages.Account.Manage
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public static string PersonalData => "PersonalData";
+        public static string PersonalData => "Dane osobiste";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public static string TwoFactorAuthentication => "TwoFactorAuthentication";
+        public static string TwoFactorAuthentication => "Uwierzytelnianie dwustopniowe";
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
