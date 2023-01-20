@@ -128,7 +128,7 @@ namespace ProjektZaliczeniowy.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Niewłaściwa nazwa użytkownika lub hasło.");
+                    ModelState.AddModelError(string.Empty, "Niewłaściwy email użytkownika lub hasło.");
                     return Page();
                 }
             }
