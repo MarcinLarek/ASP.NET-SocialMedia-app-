@@ -1,5 +1,6 @@
 ﻿@model ProjektZaliczeniowy.Models.Post
 @using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 @{
@@ -45,4 +46,11 @@
 </div>
 
 
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+      <a class="text-dark text-decoration-none" asp-action="Create" asp-route-compost="@Model.Id" asp-controller="Comments" >Create New Comment</a>
+    </p>
+
+}
 

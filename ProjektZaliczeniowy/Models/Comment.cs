@@ -8,7 +8,7 @@ namespace ProjektZaliczeniowy.Models
         public int Id { get; set; }
         public string? UserID { get; set; }
         public virtual IdentityUser? User { get; set; }
-        public string PostID { get; set; }
+        public int CommentedPost { get; set; }
         public string CommentContent { get; set; }
 
     }
