@@ -85,7 +85,7 @@ namespace ProjektZaliczeniowy.Controllers
 
                 _context.Add(post);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", post.UserID);
             return View(post);
@@ -105,6 +105,7 @@ namespace ProjektZaliczeniowy.Controllers
                 return NotFound();
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", post.UserID);
+            ViewData["CurrentUser"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View(post);
         }
 
@@ -138,7 +139,7 @@ namespace ProjektZaliczeniowy.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", post.UserID);
             return View(post);
@@ -179,7 +180,7 @@ namespace ProjektZaliczeniowy.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool PostExists(int id)
