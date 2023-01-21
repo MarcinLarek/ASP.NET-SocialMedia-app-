@@ -1,5 +1,7 @@
 ﻿@model ProjektZaliczeniowy.Models.Post
 @using Microsoft.AspNetCore.Identity
+@using ProjektZaliczeniowy.Data
+@inject ApplicationDbContext _context
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -36,7 +38,7 @@
             <div class="col-6 text-start">
                 <h5>
                     <a class="text-decoration-none" asp-action="Edit" asp-route-id="@Model?.Id"><b class="text-dark">Edytuj</b></a>
-                    <a class="text-decoration-none" asp-action="Delete" asp-route-id="@Model.Id"><b class="text-danger">Usuń</b</a>
+                    <a class="text-decoration-none" asp-action="Delete" asp-route-id="@Model.Id"><b class="text-danger">Usuń</b></a>
                 </h5>
                 
             </div>
@@ -45,12 +47,20 @@
     
 </div>
 
-
+<h4>Komentarze:</h4>
+<hr />
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>
+    <h5 class="pb-3">
       <a class="text-dark text-decoration-none" asp-action="Create" asp-route-compost="@Model.Id" asp-controller="Comments" >Create New Comment</a>
-    </p>
+    </h5>
 
 }
+@foreach(var item in _context.Comment.Where(c => c.CommentedPost == Model.Id).ToList()){
 
+    <div class="row text-dark mt-2 mb-1 bg-white">
+        @{ var user2 = await UserManager.FindByIdAsync(item.UserID);}
+        <h6>Autor: @user2.UserName</h6>
+        <p class="text-secondary">@item.CommentContent</p>
+    </div>
+}

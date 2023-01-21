@@ -48,6 +48,8 @@ namespace ProjektZaliczeniowy.Controllers
             }
             ViewData["CurrentUser"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewData["Dump"] = post.UserID;
+            var lista = _context.Comment.Where(c => c.CommentedPost == post.Id);
+            ViewData["ComList"] = await lista.ToListAsync();
             return View(post);
         }
 
