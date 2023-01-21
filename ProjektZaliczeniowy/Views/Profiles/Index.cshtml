@@ -7,6 +7,8 @@
     ViewData["Title"] = "Index";
     string userid = ViewData["ProfileUser"] as String;
     var user = await UserManager.FindByIdAsync(userid);
+    string case1 = user.Id as string;
+    string case2 = ViewData["CurrentUser"] as string;
 }
 
 <h1>Profil użytkownika <b>@user.UserName</b></h1>
@@ -22,13 +24,20 @@
 }
 
 @if(profil == null){
-    <div>
-        Nie posiadasz jeszcze danych o profilu. Kliknij
-        <a class="text-decoration-none" asp-action="Create" asp-controller="Profiles">
-            <b>Tutaj</b>
-        </a>
-        aby je dodać.
-    </div>
+    if(case1 == case2){
+        <div>
+            Nie posiadasz jeszcze danych o profilu. Kliknij
+            <a class="text-decoration-none" asp-action="Create" asp-controller="Profiles">
+                <b class="text-dark">Tutaj</b>
+            </a>
+            aby je dodać.
+        </div>
+    }
+    else {
+        <div>
+            Użytkownik nie dodał jeszcze żadnych informacji o profilu
+        </div>
+    }
 }
 else{
 
@@ -48,7 +57,7 @@ else{
 }
 
 
-@foreach (var item in _context.Post.Where(p => p.UserID == user.Id).ToList())
+@foreach (var item in _context.Post.Where(p => p.UserID == user.Id).ToList().OrderByDescending(m => m.Id))
 {
 
     <div class="row pb-4 pt-3 text-center">

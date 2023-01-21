@@ -27,6 +27,7 @@ namespace ProjektZaliczeniowy.Controllers
         public async Task<IActionResult> Index(string profileuser)
         {
             ViewData["ProfileUser"] = profileuser;
+            ViewData["CurrentUser"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             //var applicationDbContext = _context.Profile.Include(p => p.User);
             //await applicationDbContext.ToListAsync()
             return View();
