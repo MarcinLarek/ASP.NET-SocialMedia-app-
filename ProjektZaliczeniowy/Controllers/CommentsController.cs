@@ -25,27 +25,30 @@ namespace ProjektZaliczeniowy.Controllers
         // GET: Comments
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Comment.Include(c => c.User);
-            return View(await applicationDbContext.ToListAsync());
+            // var applicationDbContext = _context.Comment.Include(c => c.User);
+            //return View(await applicationDbContext.ToListAsync());
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Comments/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Comment == null)
-            {
-                return NotFound();
-            }
+            /* if (id == null || _context.Comment == null)
+             {
+                 return NotFound();
+             }
 
-            var comment = await _context.Comment
-                .Include(c => c.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (comment == null)
-            {
-                return NotFound();
-            }
+             var comment = await _context.Comment
+                 .Include(c => c.User)
+                 .FirstOrDefaultAsync(m => m.Id == id);
+             if (comment == null)
+             {
+                 return NotFound();
+             }
 
-            return View(comment);
+             return View(comment);
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Comments/Create
@@ -68,7 +71,8 @@ namespace ProjektZaliczeniowy.Controllers
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", comment.UserID);
             return View(comment);
@@ -77,6 +81,7 @@ namespace ProjektZaliczeniowy.Controllers
         // GET: Comments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            /*
             if (id == null || _context.Comment == null)
             {
                 return NotFound();
@@ -89,6 +94,8 @@ namespace ProjektZaliczeniowy.Controllers
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", comment.UserID);
             return View(comment);
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Comments/Edit/5
@@ -98,6 +105,7 @@ namespace ProjektZaliczeniowy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UserID,CommentedPost,CommentContent")] Comment comment)
         {
+            /*
             if (id != comment.Id)
             {
                 return NotFound();
@@ -125,11 +133,14 @@ namespace ProjektZaliczeniowy.Controllers
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", comment.UserID);
             return View(comment);
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            /*
             if (id == null || _context.Comment == null)
             {
                 return NotFound();
@@ -144,6 +155,8 @@ namespace ProjektZaliczeniowy.Controllers
             }
 
             return View(comment);
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Comments/Delete/5
@@ -151,6 +164,7 @@ namespace ProjektZaliczeniowy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            /*
             if (_context.Comment == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Comment'  is null.");
@@ -163,6 +177,8 @@ namespace ProjektZaliczeniowy.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         private bool CommentExists(int id)

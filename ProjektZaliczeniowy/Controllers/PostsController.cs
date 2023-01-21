@@ -27,8 +27,9 @@ namespace ProjektZaliczeniowy.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Post.Include(p => p.User);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Post.Include(p => p.User);
+            //return View(await applicationDbContext.ToListAsync());
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Posts/Details/5

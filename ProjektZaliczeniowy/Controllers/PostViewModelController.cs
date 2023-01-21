@@ -8,19 +8,22 @@ namespace ProjektZaliczeniowy.Controllers
         // GET: PostViewModelController
         public ActionResult Index()
         {
-            return View();
+            // return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: PostViewModelController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: PostViewModelController/Create
         public ActionResult Create()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: PostViewModelController/Create
