@@ -13,8 +13,10 @@
                 @{
                     var user = await UserManager.FindByIdAsync(item.UserID);
                 }
-                <div class="text-start text-secondary fs-6">
+                <div class="text-start">
+                    <a class="text-secondary fs-6 text-decoration-none" asp-action="Index" asp-controller="Profiles" asp-route-profileuser="@ViewData["CurrentUser"]">
                     @user.UserName
+                    </a>
                 </div>
                 <a asp-action="Details" asp-controller="Posts" asp-route-id="@item.Id">
                     <img class="img-fluid" src="/images/@Html.DisplayFor(modelItem => item.Image)" />

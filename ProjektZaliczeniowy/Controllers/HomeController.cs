@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjektZaliczeniowy.Data;
 using ProjektZaliczeniowy.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace ProjektZaliczeniowy.Controllers
 {
@@ -21,6 +22,7 @@ namespace ProjektZaliczeniowy.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Post;
+            ViewData["CurrentUser"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View(await applicationDbContext.ToListAsync());
         }
 

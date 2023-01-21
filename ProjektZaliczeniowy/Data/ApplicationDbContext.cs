@@ -12,5 +12,6 @@ namespace ProjektZaliczeniowy.Data
         }
         public DbSet<ProjektZaliczeniowy.Models.Post> Post { get; set; }
         public DbSet<ProjektZaliczeniowy.Models.Comment> Comment { get; set; }
+        public DbSet<ProjektZaliczeniowy.Models.Profile> Profile { get; set; }
     }
 }
