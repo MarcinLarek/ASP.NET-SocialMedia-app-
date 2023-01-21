@@ -36,6 +36,7 @@ namespace ProjektZaliczeniowy.Controllers
         // GET: Profiles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            /*
             if (id == null || _context.Profile == null)
             {
                 return NotFound();
@@ -50,6 +51,8 @@ namespace ProjektZaliczeniowy.Controllers
             }
 
             return View(profile);
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Profiles/Create
@@ -103,7 +106,7 @@ namespace ProjektZaliczeniowy.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", profile.UserID);
+            ViewData["CurrentUser"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View(profile);
         }
 
@@ -137,15 +140,16 @@ namespace ProjektZaliczeniowy.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", profile.UserID);
-            return View(profile);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Profiles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            /*
             if (id == null || _context.Profile == null)
             {
                 return NotFound();
@@ -159,7 +163,8 @@ namespace ProjektZaliczeniowy.Controllers
                 return NotFound();
             }
 
-            return View(profile);
+            return View(profile);*/
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Profiles/Delete/5
@@ -167,6 +172,7 @@ namespace ProjektZaliczeniowy.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            /*
             if (_context.Profile == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Profile'  is null.");
@@ -179,6 +185,8 @@ namespace ProjektZaliczeniowy.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            */
+            return RedirectToAction("Index", "Home");
         }
 
         private bool ProfileExists(int id)
